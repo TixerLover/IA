@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de4e8a524e2f4743a940a917e6d9ba0, type: 3}
+  m_Name: Heart
+  m_EditorClassIdentifier: 
+  Repetitions: 3
+  AngleOffsetBetweenReps: 0
+  StartWait: 0
+  EndWait: 1
+  PatternSettings:
+  - NumberOfBullets: 2
+    BulletSpeed: 10
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: 0
+    RadialMask: 1
+    MaskAngle: 20
+  - NumberOfBullets: 1
+    BulletSpeed: 13.8
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: 15
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 13.8
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: -15
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 16.7
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: 30
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 16.7
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: -30
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 18.9
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: 44
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 18.9
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: -44
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 19.2
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: 59
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 19.2
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: -59
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 17.7
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: 74
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 17.7
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: -74
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 15.6
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: 90
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 15.6
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: -90
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 13.4
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: 108
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 13.4
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: -108
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 12.2
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: 130
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 12.2
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: -130
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 12.3
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: 157
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 12.3
+    CooldownAfterShot: 0
+    PhaseOffset: 0
+    AngleOffset: -157
+    RadialMask: 1
+    MaskAngle: 52
+  - NumberOfBullets: 1
+    BulletSpeed: 14.3
+    CooldownAfterShot: 0.4
+    PhaseOffset: 0
+    AngleOffset: 180
+    RadialMask: 1
+    MaskAngle: 52
