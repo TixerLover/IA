@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
+    // 1. AQUÍ ESTÁ EL SINGLETON: Permite que los enemigos te encuentren sin causar lag.
+    public static Movement Instance { get; private set; }
+
     PlayerControls controls;
     Vector2 move;
     public float moveSpeed = 5f;
@@ -24,13 +27,16 @@ public class Movement : MonoBehaviour
     private float nextRadialTime = 0f;
     public Image cooldownWheel;
 
-    private void Start()
-    {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-    }
     private void Awake()
     {
+        // 2. CONFIGURACIÓN DEL SINGLETON
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
         controls = new PlayerControls();
         anim = GetComponent<Animator>();
         radialWeapon = GetComponent<RadialShotWeapon>();
@@ -57,19 +63,45 @@ public class Movement : MonoBehaviour
         controls.Player.Attack1.performed += ctx => Fire();
     }
 
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
+
+    private void Update()
+    {
+        if (anim != null)
+        {
+            anim.SetBool("isMoving", move.sqrMagnitude > 0.01f);
+        }
+
+        Vector2 desiredDirection = (cameraTransform.up * move.y) + (cameraTransform.right * move.x);
+        desiredDirection.Normalize();
+        rb.linearVelocity = desiredDirection * moveSpeed;
+
+        Flip();
+
+        // 3. LIMPIEZA: Tenías la lógica de actualizar la rueda repetida dos veces en el Update.
+        // Dejé solo la llamada al método que ya tenías hecho abajo.
+        HandleCooldownUI();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage(1);        
+            TakeDamage(1);
         }
     }
+
     void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
 
-        if (currentHealth == 0)
+        // 4. MEJORA: Cambiado "==" por "<=" para evitar bugs si recibes más de 1 de daño de golpe.
+        if (currentHealth <= 0)
         {
             GameOver();
             if (anim != null)
@@ -83,29 +115,12 @@ public class Movement : MonoBehaviour
     {
         Invoke("LoadDefeatScene", 2f);
     }
+
     private void LoadDefeatScene()
     {
         SceneManager.LoadScene("02_Defeat");
     }
-    private void Update()
-    {
-        if (anim != null)
-        {
-            anim.SetBool("isMoving", move.sqrMagnitude > 0.01f);
-        }
-        Vector2 desiredDirection = (cameraTransform.up * move.y) + (cameraTransform.right * move.x);
-        desiredDirection.Normalize();
-        rb.linearVelocity = desiredDirection * moveSpeed;
 
-        Flip();
-
-        if (cooldownWheel != null)
-        {
-            float remaining = Mathf.Clamp01((nextRadialTime - Time.time) / radialCooldown);
-            cooldownWheel.fillAmount = remaining;
-        }
-        HandleCooldownUI();
-    }
     private void Flip()
     {
         if ((isFacingRight && move.x < 0f) || (!isFacingRight && move.x > 0f))
@@ -125,7 +140,7 @@ public class Movement : MonoBehaviour
         {
             bullet.transform.position = firePoint.position;
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0f; 
+            mousePos.z = 0f;
             Vector2 lookDirection = (mousePos - firePoint.position).normalized;
             bullet.Velocity = lookDirection * bullet.speed;
         }
@@ -142,13 +157,13 @@ public class Movement : MonoBehaviour
             }
         }
     }
+
     private void HandleCooldownUI()
     {
         if (cooldownWheel == null) return;
 
         if (Time.time < nextRadialTime)
         {
-            // Calculate how much of the cooldown is left (0 to 1)
             float remaining = (nextRadialTime - Time.time) / radialCooldown;
             cooldownWheel.fillAmount = remaining;
         }
