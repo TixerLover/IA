@@ -130,12 +130,12 @@ GameObject:
   - component: {fileID: 762673322}
   - component: {fileID: 762673321}
   m_Layer: 0
-  m_Name: Links
+  m_Name: LinkedLists
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &762673321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 887622463}
   - component: {fileID: 887622462}
   m_Layer: 0
-  m_Name: Orcs
+  m_Name: Lists
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,12 +390,12 @@ GameObject:
   - component: {fileID: 1933587572}
   - component: {fileID: 1933587571}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1933587571
 MonoBehaviour:
   m_ObjectHideFlags: 0
